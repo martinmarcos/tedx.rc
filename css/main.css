@@ -26,6 +26,10 @@ body {
     text-align: center;
 }
 
+ol, ul {
+    list-style: outside none none;
+}
+
 .list-icons {
     padding: 0;
     margin: 20px 0;
@@ -52,6 +56,15 @@ p {
     margin-bottom: 25px;
 }
 
+.header-hidden {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding:0 !important;
+    border:0 !important;
+    height: 1px !important; 
+    width: 1px !important; 
+    overflow: hidden;
+}
 /****************************************
  * NavBar
  ****************************************/
@@ -63,6 +76,13 @@ p {
     display: block;
     max-width:250px;
     margin-top: -10px;
+}
+
+.navbar-brand > img.visible-xs{
+    display: block;
+    max-width:200px;
+    margin-top: -10px;
+    
 }
 
 .navbar-nav{
@@ -87,7 +107,7 @@ p {
     padding: 8px 15px;
     font-size: 14px;
     line-height: 1.42857143;
-    min-width: 160px;
+    min-width: 100px;
     text-align: center;
     border-radius: 0;
     text-transform: uppercase;
@@ -174,21 +194,21 @@ p {
     height: 100%;
 }
 
-.carousel-caption h1.hidden-xs {
+.carousel-caption p.hidden-xs {
     margin-top: 5%;
     text-align: left;
     padding-left: -30%;
     font-size: 65px;
 }
 
-.carousel-caption h1.visible-sm {
+.carousel-caption p.visible-sm {
     margin-top: 15%;
     text-align: left;
     padding-left: 10%;
     font-size: 40px;
 }
 
-.carousel-caption h1.visible-xs {
+.carousel-caption p.visible-xs {
     margin-top: 30%;
     text-align: left;
     padding-left: 10%;
@@ -260,7 +280,6 @@ p {
     background-size: cover;
 }
 
-
 .clock {
     padding-top: 120px;
     text-align: center;
@@ -292,9 +311,8 @@ p {
     max-width:100px;
     box-shadow: 3px 3px 5px #000;
 }
-
 /****************************************
- * Fondo
+ * Fondos
  ***************************************/
 .fondo {
     background-image: url("../img/overlay3.svg"), linear-gradient(45deg, #9DC66B 20%, #4FA49A 40%, #4361C2);
@@ -308,6 +326,7 @@ p {
     text-aling: center;
     padding-top: 15px;
     padding-bottom: 15px;
+    border-bottom: 2px solid #e62b1e;
 }
 
 .anuncio h2 {
@@ -318,14 +337,40 @@ p {
     line-height: 1.3em;
 }
 
-.anuncio h3 {
+.anuncio > div > a {
     font-size: 25px;
     letter-spacing: -0.02em;
     line-height: 1.6em;
 }
 /****************************************
+ * Principal
+ ***************************************/
+.principal {
+    border-bottom: 2px solid #e62b1e;
+    padding-bottom: 30px;
+    background: url(../img/dibujos/Contraste.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.color_tedx strong {
+    color: #e62b1e;
+}
+
+.color_tedx b {
+    color: black;
+}
+
+/****************************************
  * Oradores
  ***************************************/
+.oradores {
+    border-bottom: 2px solid #e62b1e;
+    padding-bottom: 30px;
+}
+
 .box-speakers{
     background: #FFF none repeat scroll 0% 0%;
     box-shadow: 3px 4px 15px -6px #000;
@@ -356,57 +401,47 @@ p {
     line-height: 1.6em;
     padding: 0px 15px;
 }
-
 /****************************************
  * Ejemplos
  ***************************************/
-.talk_grid_top {
-    padding-top: 30px;
-}
-
-.talk_grid_top h1{
-    font-size: 60px;
-    font-weight: bold;
-    color:black;
-    font-family: "bodonistd",serif;
-    font-style: italic; 
-    padding-bottom:30px;
-}
-
-.talk_grid_bottom {
-    padding-bottom: 3px
-}
-
-.talk_grid {
+.talk_grid_lv1 {
     padding-left: 0px;
-    padding-right: 0px;
+    padding-right: 5px;
 }
 
-.talk_sub_grid {
-    margin-right: 0px;
-    margin-left: 0px;
+.talk_grid_lv2{
+    padding-left: 0px;
+    padding-right: 5px;
 }
 
-.talk_title_content {
-    padding: 3px;
+.talk_grid h3 {
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    font-family: "bodonistd",serif;
+    font-style: italic;
+}
+
+.talk_grid_content {
+    padding-top: 5px;
     height: 100%;
 }
 
-.talk_grid img {
+.talk_grid_content img {
     width: 100%;
-    top: 0px;
-    left: 0px;
 }
 
-.talk_tile_overlay {
+.talk_grid_overlay {
+    transition: all .3s ease-out;
     background-image: linear-gradient(to bottom, transparent 20%, #000);
     height: 100%;
     width: 99%;
     position: absolute;
     top: 0px;
+    transition: all .3s ease-out;
 }
 
-.talk-grid__tile__details {
+.talk_grid_details {
     font-size: 1.07143rem;
     text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.6);
     color: #FFF;
@@ -415,21 +450,48 @@ p {
     position: absolute;
     bottom: 0px;
     left: 0px;
+    transition: min-height 200ms ease-out;
+    text-align: left;
 }
 
-.talk-grid__tile__details__speaker {
+.talk_grid_speaker {
     font-weight: 400;
     display: block;
     font-size: 20px;
 }
 
-/****************************************
- * Ejemplos
- ***************************************/
-.videos-ej {
-    padding-top: 50px;
+.talk_grid_title {
+    max-height: none;
+    overflow: visible;
+    font-size: 28px;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    font-weight: 900;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.6);
+    color: #FFF;
+    margin-top: 0px;
+    margin-bottom: 5px;
 }
 
+.talk_grid_speaker p {
+    margin-bottom: 5px;
+}
+
+.talk_grid_speaker p.visible-sm {
+    font-size: 1.3rem;
+    line-height: 1.5;
+}
+
+.talk_grid_details p.visible-sm {
+    font-size: 15px;
+    max-height: 4.8em;
+    margin-bottom: 0px;
+}
+
+.talk_grid_description {
+    display: none;
+    text-shadow: none;
+}
 
 /****************************************
  * Por que TED y TEDx
@@ -520,7 +582,7 @@ p {
     font-size: 50px;
 }
 
-.auspiciantes h1 {
+.auspiciantes h2 {
     color: #e62b1e;
     font-weight: bold;
     padding-bottom: 10px;
@@ -644,41 +706,76 @@ p {
 /****************************************
  * Videos
  ***************************************/
-.videos {
-    text-align: left;
+.video-background {
+    background-color: black;
 }
 
-.videos-titulo {
-    background-image: url("../img/auspiciantes/reja.jpg");
-    background-size: cover;
-    text-align: center;
-    color: white;
-    padding-top: 70px;
-    padding-bottom: 50px;
+.video {
+    margin-top: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 854px;
 }
 
-.videos-titulo h1{
-    font-size: 60px;
-    font-weight: bold;
+.video-content > p {
+    text-align: justify;
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: 300;
 }
 
-.video h2 {
+.video-content h2 {
     font-size: 40px;
     font-weight: bold;
     font-weight: 900;
+    text-transform: uppercase;
     letter-spacing: -0.03em;
     line-height: 1.15;
+    padding-top: 50px;
 }
 
-.video h3 {
+.video-content h3 {
     font-size: 30px;
     font-weight: 400;
 }
 
-.video-content p {
-    font-size: 22px;
-    line-height: 1.5;
-    font-weight: 300;
+.video-social {
+    background-color: white;
+    padding-top: 25px;
+    border-bottom: 2px solid #e62b1e;
+}
+
+.video-social a {
+    border: 1px solid #DEDEDE;
+    float: left;
+    font-size: 18px;
+    margin: 0px 5px 5px 0px;
+    padding: 8px 0px;
+    text-align: center;
+    width: 38px;
+    transition: all 0.2s ease-in-out;
+    color: black;
+}
+
+.video-share a {
+    width: 100px;
+    border: 0px none;
+}
+
+.video-share a:hover {
+    color:#212121;
+}
+
+.video-social li.twitter a:hover {
+    color: #55acee;
+}
+
+.video-social li.facebook a:hover {
+    color: #3b5998;
+}
+
+.video-social li.google a:hover {
+    color: #b31217;
 }
 
 /****************************************
@@ -689,4 +786,16 @@ p {
     padding-bottom: 50px;
     background-color: #000;
     color: #fff;
+}
+
+.footer-texto {
+    text-align: left;
+}
+
+.footer-texto > p {
+    margin-bottom: 0px;
+}
+
+.footer-texto > p > strong {
+    color: #e62b1e;
 }
